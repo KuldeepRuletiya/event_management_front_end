@@ -1,0 +1,120 @@
+<div class="container">
+  <!-- <div> -->
+    <div class="profile-info-content">
+      <div class="row member-btn-grp">
+        <h5 class="member-txt col-md-3">Event Information</h5>
+      </div>
+
+      <!-- <div class="row"> -->
+      <!-- <div class="col-md-7 pad-l pad-r-5">
+        <div class="grid-outer-div">
+          <div class="row">
+            <div class="col-md-2 pad-zero profile-pic text-center">
+              <table class="left-member-info">
+                <tr>
+                  <td>
+                    <img [src]="apiUrl+customerData.profile_pic" (error)="$event.target.src=no_image.url">
+
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-top: 10px;">Member Id :</td>
+                </tr>
+                <tr>
+                  <td>{{customerData.id}}</td>
+                </tr>
+                <tr>
+                  <td>Member Since :</td>
+                </tr>
+                <tr>
+                  <td>{{customerData.created_at | date}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-10 pad-zero">
+              <div class="p-card-header">
+                <h5 class="profile-txt">Manager Profile</h5>
+                <div class="p-card-right">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-7 pad-zero">
+                  <table class="member-info">
+                    <tr>
+                      <th class="first-th">Name:</th>
+                      <td class="first-td">{{customerData.name}}</td>
+
+                    </tr>
+                    <tr>
+                      <th class="first-th">Email:</th>
+                      <td class="first-td">{{customerData.email_id}}</td>
+                    </tr>
+                    <tr>
+                      <th>Mobile No:</th>
+                      <td>{{customerData.mobile_no}}</td>
+
+                    </tr>
+                    <tr>
+                      <th>Country:</th>
+                      <td>{{customerData.country_name}}</td>
+                    </tr>
+                    <tr>
+                      <th>DOB</th>
+                      <td>{{customerData.dob | date}}</td>
+                    </tr>
+                    <tr>
+                      <th>Gender</th>
+                      <td>{{customerData.gender}}</td>
+                    </tr>
+                    <tr>
+                      <th>Address:</th>
+                      <td>{{customerData.user_address}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="col-md-12 pad-l pad-r-5">
+        <div class="grid-outer-div">
+          <div class="col-md-12 p-card-header">
+            <h5 class="profile-txt">Event Details</h5>
+          </div>
+
+          <table class="member-soc-info text-center">
+            <tr>
+              <th class="first-th">Name:</th>
+              <td class="first-td">{{customerData.event_name}}</td>
+            </tr>
+
+            <tr>
+              <th>Event Date</th>
+              <td>{{customerData.dob | date}}</td>
+            </tr>
+            <tr>
+              <th class="first-th">Address:</th>
+              <td class="first-td">{{customerData.event_address}}</td>
+            </tr>
+
+            <tr>
+              <th>City:</th>
+              <td>{{customerData.event_city}}</td>
+            </tr>
+            <tr>
+              <th>Contact No:</th>
+              <td>{{customerData.contact_number}}</td>
+            </tr>
+
+            <tr>
+              <th>Pay Out</th>
+              <td>{{customerData.pay_out}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>

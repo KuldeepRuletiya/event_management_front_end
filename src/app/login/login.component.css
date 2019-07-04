@@ -1,0 +1,51 @@
+.bs-example {
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+}
+
+.div {
+    box-align: center;
+}
+
+.container {
+    align-content: center;
+    /* background-color: lightgray; */
+    margin-left: 19%;
+    margin-right: 10%;
+    padding-left: 8%;
+    padding-right: 5%;
+    padding-top: 15%;
+    padding-bottom: 5%;
+    /* margin-bottom: 10%; */
+    /* margin-top: 15%; */
+    /* background-image: url('../../assets/images/event1.jpeg') */
+}
+
+label, a {
+    color: aliceblue;
+}
+
+#bac-img {
+    background-image: url("../../assets/images/event1.jpg");
+    /* height:100%; */
+    height: -webkit-fill-available;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@media screen and (max-width: 1024px) {
+    /* Specific to this particular image */
+    #bac-img {
+        left: 50%;
+        margin-left: -512px;
+        /* 50% */
+    }
+}
+
+span {
+    color: red;
+}

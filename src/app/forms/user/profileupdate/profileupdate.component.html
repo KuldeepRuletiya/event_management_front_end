@@ -1,0 +1,120 @@
+<div class="container">
+  <form class="form-horizontal" [formGroup]="profileupdateForm" (ngSubmit)="signupPage(profileupdateForm.value)">
+    <div class="form-group">
+      <label for="first_name" class="control-label col-md-3">First Name</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control" id="first_name" name="first_name" formControlName="first_name"
+          placeholder="First Name">
+        <div
+          *ngIf="profileupdateForm.controls['first_name'].hasError('required') && profileupdateForm.controls['first_name'].touched"
+          class="alert alert-danger">First Name Is Required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="last_name" class="control-label col-md-3">Last Name</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control" id="last_name" name="last_name" formControlName="last_name"
+          placeholder="Last Name">
+        <div
+          *ngIf="profileupdateForm.controls['last_name'].hasError('required') && profileupdateForm.controls['last_name'].touched"
+          class="alert alert-danger">Last Name Is Required.</div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="middle_name" class="control-label col-md-3">Middle Name</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control" id="middle_name" name="middle_name" formControlName="middle_name"
+          placeholder="Middle Name">
+        <div
+          *ngIf="profileupdateForm.controls['middle_name'].hasError('required') && profileupdateForm.controls['middle_name'].touched"
+          class="alert alert-danger">Middle Name Is Required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="control-label col-md-3">Email Id</label>
+      <div class="col-md-4">
+        <input type="email" class="form-control" id="email" name="email" formControlName="email"
+          placeholder="User Email">
+        <div
+          *ngIf="profileupdateForm.controls['email'].hasError('required') && profileupdateForm.controls['email'].touched"
+          class="alert alert-danger">Email Is Required.</div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="city" class="control-label col-md-3">Event Name</label>
+      <div class="col-md-4">
+        <input type="text" formControlName="event_name" name="event_name" class="form-control"
+          placeholder="Enter Event Name">
+        <div
+          *ngIf="profileupdateForm.controls['event_name'].hasError('required') && profileupdateForm.controls['event_name'].touched"
+          class="alert alert-danger">Event Name Is Required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="event_location" class="control-label col-md-3">Event Address</label>
+      <div class="col-md-4">
+        <input type="text" formControlName="event_location" class="form-control" name="event_location">
+        <div
+          *ngIf="profileupdateForm.controls['event_location'].hasError('required') && profileupdateForm.controls['event_location'].touched"
+          class="alert alert-danger">Event Location Is Required.</div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="event_time" class="control-label col-md-3">Event Time</label>
+      <div class="col-md-4">
+        <input type="datetime" formControlName="event_time" class="form-control" name="event_time">
+        <div
+          *ngIf="profileupdateForm.controls['event_time'].hasError('required') && profileupdateForm.controls['event_time'].touched"
+          class="alert alert-danger">Even Time Is Required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="city" class="control-label col-md-3">City</label>
+
+      <div class="col-md-4">
+        <input type="text" formControlName="city" name="city" class="form-control" placeholder="Enter City">
+        <div
+          *ngIf="profileupdateForm.controls['city'].hasError('required') && profileupdateForm.controls['city'].touched"
+          class="alert alert-danger">City Is Required.</div>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="event_date" class="control-label col-md-3">Event Date</label>
+      <div class="col-md-4">
+        <input type="date" formControlName="event_date" class="form-control" name="event_date">
+        <div
+          *ngIf="profileupdateForm.controls['event_date'].hasError('required') && profileupdateForm.controls['event_date'].touched"
+          class="alert alert-danger">Even Date Is Required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="event_date" class="control-label col-md-3">Payment Option</label>
+      <div class="col-md-4">
+        <angular2-multiselect id="paymetoption" name="paymetoption" formControlName="paymetoption"
+          [data]="drop_down_list" [settings]="paymetoptiondrop">
+        </angular2-multiselect>
+        <div
+          *ngIf="profileupdateForm.controls['paymetoption'].hasError('required') && profileupdateForm.controls['paymetoption'].touched"
+          class="alert alert-danger">Payment Is Required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-offset-2 col-md-4">
+        <button type="submit" class="form-control" [disabled]="!profileupdateForm.valid"
+          class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

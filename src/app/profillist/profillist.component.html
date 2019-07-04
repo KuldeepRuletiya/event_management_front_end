@@ -1,0 +1,23 @@
+<div class="container">
+  <!-- <div style="align-content: center;margin:10%;"> -->
+  <div>
+    <div class="card col-md-4" *ngFor="let item of userdataList">
+      <div class="card-header">
+        <h6 id="headData"> {{item.event_name}}</h6>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <!-- <img src="{{item.url_image}}" class="avatar" alt="Profile Not Available">
+             -->
+        <img [src]="apiUrl+item.profiel_pic" (error)="$event.target.src=no_image.url">
+
+        <h6>{{item.name}}</h6>
+        <h6>{{item.event_date}}</h6>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-primary" [routerLink]="['/customer_profile_by_id',item.id]">Read More</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,45 @@
+.bs-example {
+    margin-top: 200px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    /* margin: 20px; */
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.container {
+    /* background-image: url("../../../../assets/images/sign_up_back_image.jpg"); */
+    /* background-image: url("../../../../assets/images/event1.jpg"); */
+    background-image: url("../../../../assets/images/reg4.jpg");
+    width: 100%;
+    height: 100%;
+    /* background-repeat: repeat-y; */
+    /* background-repeat: repeat-x; */
+}
+
+form {
+    margin-left: 20%;
+    margin-right: 10%;
+    margin-top: 10%;
+}
+
+label {
+    color: aliceblue;
+}
+
+span {
+    color: red;
+}
+
+.btn-dark{
+    background-color: #4B5F71;
+}
+.btn{
+margin: 10px;
+}

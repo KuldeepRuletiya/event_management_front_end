@@ -1,0 +1,257 @@
+<!-- <div class="bs-example">
+   -->
+<div class="container">
+  <form class="form-horizontal" [formGroup]="signupFrom" (ngSubmit)="signupPage(signupFrom.value)">
+    <div class="form-group">
+      <label for="name" class="control-label col-md-3">Name<span>*</span></label>
+      <div class="col-md-4">
+        <input type="text" class="form-control input-sm" id="name" name="name" formControlName="name"
+          placeholder="First Name">
+
+        <div *ngIf="signupFrom.controls['name'].hasError('required') && signupFrom.controls['name'].touched"
+          tabindex="10" class="alert alert-danger">Name Is Required.</div>
+
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label for="last_name" class="control-label col-md-3">Last Name</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control input-sm" id="last_name" name="last_name" formControlName="last_name"
+          placeholder="Last Name">
+        <div *ngIf="signupFrom.controls['last_name'].hasError('required') && signupFrom.controls['last_name'].touched"
+          class="alert alert-danger">Last Name Is Required.</div>
+      </div>
+    </div> -->
+
+    <!-- 
+    <div class="form-group">
+      <label for="middle_name" class="control-label col-md-3">Middle Name</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control input-sm" id="middle_name" name="middle_name"
+          formControlName="middle_name" placeholder="Middle Name">
+        <div
+          *ngIf="signupFrom.controls['middle_name'].hasError('required') && signupFrom.controls['middle_name'].touched"
+          class="alert alert-danger">Middle Name Is Required.</div>
+      </div>
+    </div> -->
+
+
+
+    <div class="form-group">
+      <label for="email" class="control-label col-md-3">Email Id<span>*</span></label>
+      <div class="col-md-4">
+        <input type="email" class="form-control input-sm" id="email" name="email" formControlName="email"
+          placeholder="User Email">
+        <div *ngIf="signupFrom.controls['email'].hasError('required') && signupFrom.controls['email'].touched"
+          class="alert alert-danger">Email Is Required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-md-3">User Type<span>*</span></label>
+
+      <div class="col-md-4">
+        <!-- <angular2-multiselect id="user_type" name="user_type" formControlName="user_type" [data]="drop_down_list"
+          (onSelect)="change_value_type($event)" (onDeSelect)="change_value_type(0)" [settings]="usertypeSettings">
+        </angular2-multiselect> -->
+
+        <select class="form-control input-sm" id="user_type" name="user_type" formControlName="user_type">
+          <option [ngValue]="null" selected>Select User Type</option>
+
+          <option *ngFor="let u_type of userType;let i=index" [value]="u_type.name">
+            {{u_type.name}}
+          </option>
+        </select>
+
+        <div *ngIf="signupFrom.controls['user_type'].hasError('required') && signupFrom.controls['user_type'].touched"
+          class="alert alert-danger">UserType Is Required.</div>
+      </div>
+
+    </div>
+
+    <!-- <div class="form-group" *ngIf="usertype==2">
+      <label for="last_name" class="control-label col-md-3">Profile Pic<span>*</span></label>
+      <div class="col-md-4">
+        <input type="file" class="form-control input-sm" id="profile_pic" name="profile_pic" #profile_pic
+          formControlName="profile_pic" placeholder="Last Name">
+        <div
+          *ngIf="signupFrom.controls['profile_pic'].hasError('required') && signupFrom.controls['profile_pic'].touched"
+          class="alert alert-danger">Profile Pic Required.</div>
+      </div>
+    </div> -->
+
+    <div class="form-group">
+      <label for="last_name" class="control-label col-md-3">Profile Pic<span>*</span></label>
+      <div class="col-md-4">
+        <input type="file" class="form-control input-sm" #profile_pic accept="image/*"  formControlName="profile_pic" name="profile_pic"
+          (change)="fileChange($event)">
+        <div
+          *ngIf="signupFrom.controls['profile_pic'].hasError('required') && signupFrom.controls['profile_pic'].touched"
+          class="alert alert-danger">Profile Pic Required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-md-3">gender<span>*</span></label>
+
+      <div class="col-md-4">
+        <select class="form-control input-sm" id="gender_type" name="gender_type" formControlName="gender_type">
+          <option [ngValue]="null" selected>Select Gender Type</option>
+
+          <option *ngFor="let gender of genderData;let i=index" [value]="gender.name">
+            {{gender.name}}
+          </option>
+        </select>
+
+        <!-- <angular2-multiselect id="gender_type" name="gender_type" formControlName="gender_type"
+          [data]="gender_drop_down_list" (onSelect)="change_gender_type($event)" (onDeSelect)="change_gender_type(0)"
+          [settings]="gendertypeSettings">
+        </angular2-multiselect> -->
+
+        <div
+          *ngIf="signupFrom.controls['gender_type'].hasError('required') && signupFrom.controls['gender_type'].touched"
+          class="alert alert-danger">Gender Is Required.</div>
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+      <label for="dob" class="control-label col-md-3">DOB<span>*</span></label>
+      <div class="col-md-4">
+        <input type="date" formControlName="dob" class="form-control" name="dob">
+        <div *ngIf="signupFrom.controls['dob'].hasError('required') && signupFrom.controls['dob'].touched"
+          class="alert alert-danger">DOB Is Required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mobile_number" class="control-label col-md-3">Mobile Number<span>*</span></label>
+      <div class="col-md-4">
+        <input type="text" formControlName="mobile_number" class="form-control" name="mobile_number">
+        <div
+          *ngIf="signupFrom.controls['mobile_number'].hasError('required') && signupFrom.controls['mobile_number'].touched"
+          class="alert alert-danger">Mobile Number Is Required.</div>
+      </div>
+    </div>
+
+
+
+    <div *ngIf="usertype==2">
+      <div class="form-group">
+
+        <label for="city" class="control-label col-md-3">Event Name<span>*</span></label>
+
+        <div class="col-md-4">
+          <input type="text" formControlName="event_name" name="event_name" class="form-control input-sm"
+            placeholder="Enter Event Name">
+          <div
+            *ngIf="signupFrom.controls['event_name'].hasError('required') && signupFrom.controls['event_name'].touched"
+            class="alert alert-danger">Event Name Is Required.</div>
+
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="event_location" class="control-label col-md-3">Event Address<span>*</span></label>
+        <div class="col-md-4">
+          <input type="text" formControlName="event_location" class="form-control input-sm" name="event_location">
+          <div
+            *ngIf="signupFrom.controls['event_location'].hasError('required') && signupFrom.controls['event_location'].touched"
+            class="alert alert-danger">Event Location Is Required.</div>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="event_time" class="control-label col-md-3">Event Time<span>*</span></label>
+        <div class="col-md-4">
+          <input type="datetime" formControlName="event_time" class="form-control input-sm" name="event_time">
+          <div
+            *ngIf="signupFrom.controls['event_time'].hasError('required') && signupFrom.controls['event_time'].touched"
+            class="alert alert-danger">Even Time Is Required.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="city" class="control-label col-md-3">City<span>*</span></label>
+
+        <div class="col-md-4">
+          <input type="text" formControlName="city" name="city" class="form-control input-sm" placeholder="Enter City">
+          <div *ngIf="signupFrom.controls['city'].hasError('required') && signupFrom.controls['city'].touched"
+            class="alert alert-danger">City Is Required.</div>
+
+        </div>
+      </div>
+
+
+
+
+      <div class="form-group">
+        <label for="event_date" class="control-label col-md-3">Event Date<span>*</span></label>
+        <div class="col-md-4">
+          <input type="date" formControlName="event_date" class="form-control input-sm" name="event_date">
+          <div
+            *ngIf="signupFrom.controls['event_date'].hasError('required') && signupFrom.controls['event_date'].touched"
+            class="alert alert-danger">Even Date Is Required.</div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="contact_us" class="control-label col-md-3">Contact Number<span>*</span></label>
+        <div class="col-md-4">
+          <input type="text" formControlName="contact_us" class="form-control" name="contact_us">
+          <div
+            *ngIf="signupFrom.controls['contact_us'].hasError('required') && signupFrom.controls['contact_us'].touched"
+            class="alert alert-danger">Contact Number Is Required.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="paymetoption" class="control-label col-md-3">Pay Out<span>*</span></label>
+        <div class="col-md-4">
+          <input type="text" name="paymetoption" formControlName="paymetoption" class="form-control input-sm"
+            name="paymetoption" placeholder="Enter Payment">
+
+          <!-- <angular2-multiselect id="paymetoption" name="paymetoption" formControlName="paymetoption"
+            [data]="payment_drop_down_list" [settings]="paymetoptiondrop">
+          </angular2-multiselect> -->
+          <div
+            *ngIf="signupFrom.controls['paymetoption'].hasError('required') && signupFrom.controls['paymetoption'].touched"
+            class="alert alert-danger">Payment Is Required.</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Password" class="control-label col-md-3">Password<span>*</span></label>
+      <div class="col-md-4">
+        <input type="password" class="form-control input-sm" id="password" formControlName="password"
+          placeholder="Password">
+        <div *ngIf="signupFrom.controls['password'].hasError('required') && signupFrom.controls['password'].touched"
+          class="alert alert-danger">Password Is Required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirm_password" class="control-label col-md-3">Confirm Password<span>*</span></label>
+      <div class="col-md-4">
+        <input type="password" class="form-control input-sm" id="confirm_password" formControlName="confirm_password"
+          name="confirm_password" placeholder="Confirm Password">
+        <div
+          *ngIf="signupFrom.controls['confirm_password'].hasError('required') && signupFrom.controls['confirm_password'].touched"
+          class="alert alert-danger">Confirm Password Is Required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <!-- <button type="submit" class="form-control input-sm" [disabled]="!signupFrom.valid"
+            class="btn btn-primary">Submit</button> -->
+        <button type="reset" class="btn btn-dark col-md-3">Reset</button>
+        <button type="submit" class="btn btn-success col-md-3">Submit</button>
+        <button type="button" class="btn btn-danger col-md-3" (click)="cancelForm()">Cancel</button>
+
+      </div>
+    </div>
+  </form>
+</div>
