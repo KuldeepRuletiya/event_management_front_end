@@ -40,11 +40,7 @@ const appRoutes: Routes = [
   { path: 'get_profile_details', component: GetProfileManagerDetailsComponent },
   { path: 'customer_profile_by_id/:id', component: GetProfileManagerDetailsComponent },
   { path: 'event_details_by_id/:id', component: GetManagerEventDetailsComponent },
-
-
   { path: '**', component: PagenotfoundComponent },
-
-
 ];
 
 @NgModule({
