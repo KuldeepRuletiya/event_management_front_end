@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import { Custom_api_calling } from '../adapters/Custom_api_calling';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { ApiserviceService } from '../services/ApiServices/apiservice.service';
+import { SEOService } from '../services/seoservice/seo.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +16,16 @@ export class LoginComponent implements OnInit {
 
   loginFrom: FormGroup;
   // myRecaptcha = new FormControl(false)
-  constructor(private fb: FormBuilder, private router: Router, private apiserviceService: ApiserviceService, private usersService: UsersService, private custom_api_calling: Custom_api_calling, private flashMessagesService: FlashMessagesService) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private apiserviceService: ApiserviceService,
+    private usersService: UsersService,
+    private custom_api_calling: Custom_api_calling,
+    private flashMessagesService: FlashMessagesService,
+    private routes: ActivatedRoute,
+    private seoservice: SEOService
+  ) { }
 
   ngOnInit() {
     var emailVal = /^[A-Za-z_][A-Za-z0-9_]*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$/;
@@ -25,6 +36,9 @@ export class LoginComponent implements OnInit {
       'recaptchaReactive': [null],
     });
 
+    console.log("login current activate component is", this.routes.component['name']);
+    console.log("on load login page title name", this.seoservice.getPageTitle());
+    console.log("set page titile on login page", this.seoservice.setPageTitle(this.routes.component['name']))
   }
 
   resolved(captchaResponse: string) {
@@ -60,10 +74,10 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  newTab(){
-    window.location.href="https://www.google.com";
+  newTab() {
+    window.location.href = "https://www.google.com";
   }
 
 
-  
+
 }

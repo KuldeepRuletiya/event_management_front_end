@@ -1,7 +1,7 @@
 <div class="container">
   <!-- <div style="align-content: center;margin:10%;"> -->
   <div>
-    <div class="card col-md-4" *ngFor="let item of userdataList">
+    <div class="card col-md-4" *ngFor="let item of userdataList;let i=index" [ngStyle]="{'background-color':'red'}">
       <div class="card-header">
         <h6 id="headData"> {{item.event_name}}</h6>
       </div>
@@ -19,5 +19,4 @@
       </div>
     </div>
   </div>
-
 </div>

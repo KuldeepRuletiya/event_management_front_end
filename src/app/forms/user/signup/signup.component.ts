@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 // import { UsersService } from 'src/app/services/users.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { ApiserviceService } from 'src/app/services/ApiServices/apiservice.service';
+import { SEOService } from '../../../services/seoservice/seo.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +23,7 @@ export class SignupComponent implements OnInit {
   ]
 
   genderData: any = [
-    { id: 1, name: "Male" }, 
+    { id: 1, name: "Male" },
     { id: 2, name: "Female" },
     { id: 3, name: "Other" }
   ]
@@ -36,6 +38,7 @@ export class SignupComponent implements OnInit {
   // ]
 
   @ViewChild('profile_pic') profile_pic;
+  @ViewChild('appAutofocus') infocus: ElementRef;
 
   // usertypeSettings: any = {
   //   text: "Select",
@@ -63,7 +66,15 @@ export class SignupComponent implements OnInit {
   // };
   // payment_drop_down_list: any = [];
 
-  constructor(private fb: FormBuilder, private apiserviceService: ApiserviceService, private router: Router, private flashMessagesService: FlashMessagesService) { }
+  constructor(private fb: FormBuilder,
+    private apiserviceService: ApiserviceService,
+    private router: Router,
+    private flashMessagesService: FlashMessagesService,
+    private routes: ActivatedRoute,
+    private seoservice: SEOService,
+    public renderer: Renderer,
+    private el:ElementRef
+  ) { }
 
   ngOnInit() {
     this.signupFrom = this.fb.group({
@@ -102,6 +113,10 @@ export class SignupComponent implements OnInit {
     //   return { id: data.id, itemName: data.name }
     // });
 
+
+    console.log("current activate component is", this.routes.component['name']);
+    console.log("on load signup page title name", this.seoservice.getPageTitle());
+    console.log("set page titile signup", this.seoservice.setPageTitle(this.routes.component['name']))
 
   }
 
@@ -174,4 +189,9 @@ export class SignupComponent implements OnInit {
     this.router.navigate(['/login'])
 
   }
+
+  ngAfterViewInit() {
+    this.renderer.invokeElementMethod(
+    this.infocus.nativeElement, 'focus');                     
+}
 }

@@ -29,6 +29,9 @@ import { ApiserviceService } from './services/ApiServices/apiservice.service';
 import { RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { ExternalLinkDirectiveDirective } from './customer-directives/external-link-directive.directive';
+import { FileInputAccessorModule } from "file-input-accessor";
+import { SEOService } from './services/seoservice/seo.service';
+import { AutofocusDirective } from './services/autofocus.directive';
 
 const appRoutes: Routes = [
   // { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -59,7 +62,8 @@ const appRoutes: Routes = [
     UserFormComponent,
     GetProfileManagerDetailsComponent,
     GetManagerEventDetailsComponent,
-    ExternalLinkDirectiveDirective
+    ExternalLinkDirectiveDirective,
+    AutofocusDirective
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -74,11 +78,13 @@ const appRoutes: Routes = [
     FlashMessagesModule.forRoot(),
     RecaptchaModule,
     RecaptchaFormsModule,
+    FileInputAccessorModule,
   ],
   providers: [
     UsersService,
     ApiserviceService,
     Custom_api_calling,
+    SEOService,
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
@@ -86,6 +92,9 @@ const appRoutes: Routes = [
       } as RecaptchaSettings,
     }
   ],
+  // exports:[
+  //   SEOService,
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
